@@ -33,6 +33,11 @@ class Organisateur extends User {
         $event->setName($name);
         $event->setDate($date);
     }
+
+    public function supprimerEvent()
+    {
+
+    }
 }   
 
 
@@ -43,13 +48,15 @@ class Event {
     private $description;
     private $date;
     private $lieu;
+    private $billetsDisponibles;
 
-    public function __construct($title, $description, $date, $lieu)
+    public function __construct($title, $description, $date, $lieu, $billetsDisponibles)
     {
         $this->title = $title;
         $this->description = $description;
         $this->date = $date;
         $this->lieu = $lieu;
+        $this->billetsDisponibles = $billetsDisponibles;
     }
 
     public function gettitle()
@@ -72,6 +79,11 @@ class Event {
         return $this->lieu;
     }
 
+    public function getbilletsDisponibles()
+    {
+        return $this->$billetsDisponibles;
+    }
+
     public function settitle($title)
     {
         $this->title = $title;
@@ -92,18 +104,18 @@ class Event {
         $this->lieu = $lieu;
     }
 
-
-    public function ajouterEvent()
+    public function setbilletsDisponibles($billetsDisponibles)
     {
-
-    }
-    public function modifierEvent()
-    {
-
+        $this->billetsDisponibles = $billetsDisponibles;
     }
 
-    public function supprimerEvent()
+    public function reserverBillet(User $user)
     {
         
+    }
+
+    public function ajouterBilletsDisponibles($nombreBillets)
+    {
+        $this->billetsDisponibles += $nombreBillets;
     }
 }
