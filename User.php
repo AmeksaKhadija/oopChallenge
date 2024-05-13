@@ -23,20 +23,23 @@ class Organisateur extends User {
         parent::__construct($id, $name, $email);
     }
 
-    public function crierEvent($name, $date)
+    public function creerEvent($title, $description, $date, $lieu)
     {
-        return new Event($name, $date);
+        return new Event($title, $description, $date, $lieu);
     }
     
-    public function modifierEvent(Event $event, $name, $date)
+    public function modifierEvent(Event $title, $description, $date, $lieu)
     {
-        $event->setName($name);
+        $event->settitle($title);
+        $event->setDescription($description);
         $event->setDate($date);
+        $event->setLieu($lieu);
     }
 
-    public function supprimerEvent()
+    public function supprimerEvent(Event $event)
     {
-
+        $event = new Event();
+        $event->supprimerEvent($event);
     }
 }   
 
@@ -112,10 +115,5 @@ class Event {
     public function reserverBillet(User $user)
     {
         
-    }
-
-    public function ajouterBilletsDisponibles($nombreBillets)
-    {
-        $this->billetsDisponibles += $nombreBillets;
     }
 }
