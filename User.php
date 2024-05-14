@@ -13,7 +13,7 @@ class User {
     }
     public function reserver($event)
     {
-        // return new Reservation;
+        
     }
 }
 class Organisateur extends User {
