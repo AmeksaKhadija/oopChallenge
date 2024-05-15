@@ -18,9 +18,10 @@ class User {
 }
 class Organisateur extends User {
 
-    public function __construct($id, $name, $email)
+    public function __construct($id, $name, $email, $age)
     {
         parent::__construct($id, $name, $email);
+        $this->age = $age;
     }
 
     public function creerEvent($title, $description, $date, $lieu)
@@ -62,9 +63,14 @@ class Event {
         $this->billetsDisponibles = $billetsDisponibles;
     }
 
-    public function gettitle()
+    public function getTitle()
     {
         return $this->title;
+    }
+
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 
     public function getDescription()
@@ -72,37 +78,27 @@ class Event {
         return $this->description;
     }
 
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
+
     public function getDate()
     {
         return $this->date;
     }
-
-    public function getlieu()
-    {
-        return $this->lieu;
-    }
-
-    public function getbilletsDisponibles()
-    {
-        return $this->$billetsDisponibles;
-    }
-
-    public function settitle($title)
-    {
-        $this->title = $title;
-    }
-
-    public function setDescription($description)
-    {
-        $this->description->$description;
-    }    
 
     public function setDate($date)
     {
         $this->date = $date;
     }
 
-    public function setLieu()
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu($lieu)
     {
         $this->lieu = $lieu;
     }
