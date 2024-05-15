@@ -15,8 +15,17 @@ class User {
     {
         
     }
+
+    public function ConsulterReservation()
+    {
+        return $this->reservation;
+    }
 }
+
+
+
 class Organisateur extends User {
+    public $age;
 
     public function __construct($id, $name, $email, $age)
     {
@@ -24,9 +33,9 @@ class Organisateur extends User {
         $this->age = $age;
     }
 
-    public function creerEvent($title, $description, $date, $lieu)
+    public function creerEvent($title, $description, $date, $lieu, $billetsDisponibles)
     {
-        return new Event($title, $description, $date, $lieu);
+        return new Event($title, $description, $date, $lieu, $billetsDisponibles);
     }
     
     public function modifierEvent(Event $title, $description, $date, $lieu)
@@ -35,12 +44,12 @@ class Organisateur extends User {
         $event->setDescription($description);
         $event->setDate($date);
         $event->setLieu($lieu);
+        $event->setbilletsDisponibles($billetsDisponibles);
     }
 
-    public function supprimerEvent(Event $event)
+    public function supprimerEvent(&$event)
     {
-        $event = new Event();
-        $event->supprimerEvent($event);
+        $event = null;
     }
 }   
 
@@ -103,6 +112,11 @@ class Event {
         $this->lieu = $lieu;
     }
 
+    public function getbilletsDisponibles()
+    {
+        return $this->billetsDisponibles;
+    }
+
     public function setbilletsDisponibles($billetsDisponibles)
     {
         $this->billetsDisponibles = $billetsDisponibles;
@@ -110,6 +124,10 @@ class Event {
 
     public function reserverBillet(User $user)
     {
-        
+        if($this->billetsDisponibles > 0){
+            $this->billetsDisponibles--;
+            return true;
+        }
+        return false;
     }
 }
